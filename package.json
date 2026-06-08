@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "nanoid": "^5.1.11",
+    "prop-types": "^15.8.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-hook-form": "^7.77.0"
