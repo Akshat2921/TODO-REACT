@@ -11,7 +11,7 @@
 
 ## 🚀 Live Demo
 
-**[taskflow-demo.vercel.app](https://todo-react-chi-seven.vercel.app)** — Deployed on Vercel
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-todo--react--chi--seven.vercel.app-7c6cff?style=for-the-badge)](https://todo-react-chi-seven.vercel.app)
 
 ---
 
@@ -233,13 +233,25 @@ Most complex child. Manages local `isEditing` state. Inline edit with keyboard s
 
 ---
 
+## 📸 Preview
+
+> Dark themed UI with ambient gradient background, smooth animations, and fully responsive layout.
+
+---
+---
+
 ## 📄 License
 
 MIT License — feel free to use this project for learning or as a template.
 
 ---
 
-<p align="center">Built with ❤️ while learning React</p>
+
+<div align="center">
+
+Made with ❤️ by [Akshat](https://github.com/Akshat2921) while learning React
+
+</div> -->
 
 <!-- <div align="center">
 
