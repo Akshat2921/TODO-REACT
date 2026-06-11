@@ -53,7 +53,7 @@
 - **Stats Dashboard** — Total, Done, Pending, Urgent counts
 - **Persistent Storage** — Data saved in `localStorage` — survives page refresh
 - **Time Stamps** — "just now", "2h ago", "1d ago" relative time
-
+- **Toast Notifications** — Dynamic contextual alerts for every action (add, edit, delete, clear)
 ---
 
 ## 🛠️ Tech Stack
@@ -66,8 +66,8 @@
 | nanoid | Unique ID generation |
 | CSS Custom Properties | Theming & dark UI |
 | localStorage API | Client-side persistence |
+| React Toastify | Toast notifications |
 | Vercel | Deployment |
-
 ---
 
 ## ⚙️ React Concepts Used
@@ -81,6 +81,7 @@
 | `useMemo` | App | Cache stats, visibleTodos, counts |
 | `useCallback` | App, TodoItem | Stable function references for memoized children |
 | `useRef` | AddTodo, TodoItem | Input focus on mount & edit mode |
+| `cssTransition` | App | Custom zoom-in toast animation from center screen |
 
 ### Performance Optimization
 
@@ -211,7 +212,7 @@ Most complex child. Manages local `isEditing` state. Inline edit with keyboard s
 - **Left border accent** on each todo item — instant visual priority indicator
 - **Hover-only actions** — Edit/Delete buttons appear on hover to reduce visual noise
 - **Smooth animations** — `slideIn` on new items, `fadeUp` on card mount
-
+- **Toast notifications** — Every CRUD action triggers a dynamic toast: shows old→new text on edit, count on clear, task name on delete. Custom `cssTransition` creates a zoom-from-center animation that lands at bottom-right. Styled to match dark theme — `#1a1a24` surface, left border accent per type (green/red/purple), gradient progress bar
 ---
 
 ## 🔮 Future Improvements
