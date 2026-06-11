@@ -4,6 +4,12 @@ import TodoList from './components/TodoList'
 import Stats from './components/Stats'
 import FilterBar from './components/FilterBar'
 import './App.css'
+import { ToastContainer,toast } from 'react-toastify'
+import { cssTransition } from 'react-toastify'
+const ZoomTransition = cssTransition({
+  enter: 'toastZoomIn',
+  exit: 'toastZoomOut',
+})
 
 const INITIAL_TODOS = [
   { id: 1, text: "React seekhna", priority: "high", category: "study", completed: false, createdAt: Date.now() - 86400000 },
@@ -49,23 +55,29 @@ const App = () => {
   // ── DELETE ───────────────────────────────────────────
   // useCallback: same reason — TodoItem ko jaata hai
   const deleteTodo = useCallback((id) => {
+    const todo = todos.find(t => t.id === id)  // ye line add
     setTodos(prev => prev.filter(t => t.id !== id))
-  }, [])
+    toast.error(`🗑️ "${todo?.text?.slice(0, 28)}..." delete ho gaya`)
+  }, [todos])
 
   // ── EDIT ─────────────────────────────────────────────
   // useCallback: TodoItem ko jaata hai
   const editTodo = useCallback((id, newText) => {
+     const old = todos.find(t => t.id === id)
     setTodos(prev =>
       prev.map(t => t.id === id ? { ...t, text: newText } : t)
     )
-  }, [])
+    toast.success(`✎ "${old?.text?.slice(0, 20)}..." → "${newText.slice(0, 20)}"`)
+  }, [todos])
 
   // ── CLEAR COMPLETED ──────────────────────────────────
   // useCallback: Header button ko jaata hai
   // Stats component mein pass hota hai — React.memo ke saath useful
   const clearCompleted = useCallback(() => {
+    const count = todos.filter(t => t.completed).length
     setTodos(prev => prev.filter(t => !t.completed))
-  }, [])
+    toast.info(`✦ ${count} completed task${count > 1 ? 's' : ''} saaf ho gaye`)
+}, [todos])
 
   // ── STATS ────────────────────────────────────────────
   // useMemo: Sahi jagah — todos pe 4 alag filter calculations
@@ -120,6 +132,16 @@ const App = () => {
 
   return (
     <div className="app-shell">
+      <ToastContainer
+  position="bottom-right"
+  autoClose={3000}
+  hideProgressBar={false}
+  newestOnTop
+  closeOnClick
+  pauseOnHover
+  theme="dark"
+  transition={ZoomTransition}
+/>
       <div className="blob blob-1" />
       <div className="blob blob-2" />
       <div className="blob blob-3" />

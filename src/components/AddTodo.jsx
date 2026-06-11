@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { nanoid } from 'nanoid'
 import { memo, useRef, useEffect } from 'react'
-
+import { toast } from 'react-toastify'
 const CATEGORIES = ["work", "study", "health", "personal"]
 const PRIORITIES = ["high", "medium", "low"]
 
@@ -36,6 +36,7 @@ const AddTodo = memo(({ addTodo }) => {
       priority: data.priority,
       category: data.category,
     })
+    toast.success(`"${data.text.slice(0, 30)}" add ho gaya ✦`)
     reset()
     // Submit ke baad focus wapas input pe
     inputRef.current?.focus()
